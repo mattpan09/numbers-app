@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h1>Arithmetic</h1>
+        <input type="text" id="operand1">
+        <label for="">+</label>
+        <input type="text" id="operand2">
+        <button onclick="add()">=</button>
+        <label id="sum"></label>
+
+    </section>
+
+    <!-- We can put the JS in a script tag INSIDE the head or the body -->
+    <!-- Or we can put it in a separate file and link it-->
+    <!-- Make it the LAST child of head -->
+    <script>
+        async function add() {
+            const operand1Input = document.getElementById("operand1");
+            const operand2Input = document.getElementById("operand2");
+            let n = operand1Input.value;
+            let m = operand2Input.value;
+            const response = await fetch(`http://localhost:3000/add/${n}/${m}`);
+            const sum = await response.json();
+            document.getElementById("sum").innerText = sum;
+        }
+    </script>
+    
+    
+    
+</body>
+</html>
