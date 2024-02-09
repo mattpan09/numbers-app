@@ -17,9 +17,9 @@
         <label id="sum"></label>
 
         <h2>Subtraction</h2>
-        <input type="text" id="operand1">
+        <input type="text" id="operand3">
         <label for="">-</label>
-        <input type="text" id="operand2">
+        <input type="text" id="operand4">
         <button onclick="subtraction()">=</button>
         <label id="difference"></label>
 
@@ -40,8 +40,8 @@
         }
 
         async function subtraction() {
-            const operand1Input = document.getElementById("operand1");
-            const operand2Input = document.getElementById("operand2");
+            const operand1Input = document.getElementById("operand3");
+            const operand2Input = document.getElementById("operand4");
             let n = operand1Input.value;
             let m = operand2Input.value;
             const response = await fetch(`https://arithmetic-service-mattpan09.onrender.com//subtract/${n}/${m}`);
