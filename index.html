@@ -8,11 +8,20 @@
 <body>
     <section>
         <h1>Arithmetic</h1>
+
+        <h2>Addition</h2>
         <input type="text" id="operand1">
         <label for="">+</label>
         <input type="text" id="operand2">
         <button onclick="add()">=</button>
         <label id="sum"></label>
+
+        <h2>Subtraction</h2>
+        <input type="text" id="operand1">
+        <label for="">-</label>
+        <input type="text" id="operand2">
+        <button onclick="subtraction()">=</button>
+        <label id="difference"></label>
 
     </section>
 
@@ -25,7 +34,7 @@
             const operand2Input = document.getElementById("operand2");
             let n = operand1Input.value;
             let m = operand2Input.value;
-            const response = await fetch(`https://arithmetic-service-mattpan09-onrender.com/add/${n}/${m}`);
+            const response = await fetch(`https://arithmetic-service-mattpan09.onrender.com/add/${n}/${m}`);
             const sum = await response.json();
             document.getElementById("sum").innerText = sum;
         }
@@ -35,7 +44,7 @@
             const operand2Input = document.getElementById("operand2");
             let n = operand1Input.value;
             let m = operand2Input.value;
-            const response = await fetch(`https://arithmetic-service-mattpan09-onrender.com/subtract/${n}/${m}`);
+            const response = await fetch(`https://arithmetic-service-mattpan09.onrender.com//subtract/${n}/${m}`);
             const difference = await response.json();
             document.getElementById("difference").innerText = difference;
         }
