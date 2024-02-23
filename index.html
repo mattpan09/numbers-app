@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 <body>
-    <section>
+    <!-- <section>
         <h1>Arithmetic</h1>
 
         <h2>Addition</h2>
@@ -23,7 +36,30 @@
         <button onclick="subtraction()">=</button>
         <label id="difference"></label>
 
-    </section>
+    </section> -->
+
+    <div class="row">
+        <div class="column">
+            <section>
+                <h2>Arithmetic</h2>
+                <input type="text" id="operand1">
+                <label>+</label>
+                <input type="text" id="operand2">
+                <button onclick="add()">=</button>
+                <label id="sum"></label>
+            </section>
+        </div>
+        <div class="column">
+            <section>
+                <h2>Prime check</h2>
+                <label>Number to test:</label>
+                <input id="primeNumber"/>
+                <button onclick="isPrime()">Check</button>
+                <label id="primeCheckResult"></label>
+            </section>
+        </div>
+
+    </div>
 
     <!-- We can put the JS in a script tag INSIDE the head or the body -->
     <!-- Or we can put it in a separate file and link it-->
@@ -39,14 +75,21 @@
             document.getElementById("sum").innerText = sum;
         }
 
-        async function subtraction() {
-            const operand1Input = document.getElementById("operand3");
-            const operand2Input = document.getElementById("operand4");
-            let n = operand1Input.value;
-            let m = operand2Input.value;
-            const response = await fetch(`https://arithmetic-service-mattpan09.onrender.com//subtract/${n}/${m}`);
-            const difference = await response.json();
-            document.getElementById("difference").innerText = difference;
+        // async function subtraction() {
+        //     const operand1Input = document.getElementById("operand3");
+        //     const operand2Input = document.getElementById("operand4");
+        //     let n = operand1Input.value;
+        //     let m = operand2Input.value;
+        //     const response = await fetch(`https://arithmetic-service-mattpan09.onrender.com//subtract/${n}/${m}`);
+        //     const difference = await response.json();
+        //     document.getElementById("difference").innerText = difference;
+        // }
+        async function isPrime() {
+            const numberToTest = document.getElementById("primeNumber");
+            let n = numberToTest.value;
+            const response = await fetch(`https://primes-service-mattpan09.onrender.com/primes/${n}`);
+            const result = await response.json();
+            document.getElementById("primeCheckResult").innerText = result;
         }
     </script>
     
